@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=sql_injection_poc
+      - POSTGRES_USER=sql_injection_poc
+      - POSTGRES_PASSWORD=sql_injection_poc
+      - MAX_CONNECTIONS=300
+    volumes:
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
